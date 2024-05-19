@@ -1,0 +1,5 @@
+MODE_LIST = '#mode-list'
+SORTER = '#sorter'
+PRICES = '[data-price-amount]'
+AMOUNT = '#toolbar-amount'
+LIMITER = '#limiter'
