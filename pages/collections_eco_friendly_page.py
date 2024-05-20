@@ -20,7 +20,7 @@ class CollectionsEcoFriendly(BasePage):
     def check_amount_of_page_items(self, digit):
         all_items = self.get_items_amount()
         self.set_limit(digit)
-        items = self.find(loc.PRICES).count()
+        items = self.find(loc.GOODS).count()
         assert items == min(all_items, int(digit))
 
     @allure.step('Check sort by price')

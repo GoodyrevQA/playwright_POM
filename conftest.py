@@ -3,7 +3,14 @@ from pages.customer_account_create_page import CustomerAccountCreatePage
 from pages.sale_page import SalePage
 from pages.collections_eco_friendly_page import CollectionsEcoFriendly
 import pytest
+import allure
 
+
+@pytest.fixture(autouse=True)
+def screenshot_on_failure(request, page: Page):
+    yield
+    if hasattr(request.node, "rep_call") and not request.node.rep_call.passed:
+        allure.attach(page.screenshot(full_page=True), name="screenshot", attachment_type=allure.attachment_type.PNG)
 
 
 @pytest.fixture()
@@ -26,4 +33,3 @@ def sale_page(page):
 @pytest.fixture()
 def collections_eco_friendly_page(page) -> CollectionsEcoFriendly:
     return CollectionsEcoFriendly(page)
-
